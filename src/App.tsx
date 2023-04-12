@@ -1,25 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import ErrorPage from "./pages/ErrorPage";
+import HomePage from "./pages/HomePage";
+import RootPage from "./pages/RootPage";
+import ProductPage from "./pages/ProductPage";
+import ProductsPage from "./pages/ProductsPage";
+import { persistor, store } from "./stores/root.store";
+import ProductsByCollectionPage from "./pages/ProductsByCollectionPage";
+import ProductsByCategoryPage from "./pages/ProductsByCategoryPage";
+import SnackbarController from "./features/core/SnackbarController";
+import CartsPage from "./pages/CartsPage";
+import { PersistGate } from "redux-persist/integration/react";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootPage />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "",
+        element: <HomePage />,
+      },
+      {
+        path: "cart",
+        element: <CartsPage />,
+      },
+      {
+        path: "products",
+        element: <ProductsPage />,
+      },
+      {
+        path: "products/:productId",
+        element: <ProductPage />,
+      },
+      {
+        path: "collections/:collection",
+        element: <ProductsByCollectionPage />,
+      },
+      {
+        path: "categories/:category",
+        element: <ProductsByCategoryPage />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+        <SnackbarController />
+      </PersistGate>
+    </Provider>
   );
 }
 
