@@ -12,9 +12,10 @@ import { openSnackbar } from "../../stores/app.store";
 
 interface Props {
   product: ProductModel;
+  index: number;
 }
 
-const ProductCard: React.FC<Props> = ({ product }) => {
+const ProductCard: React.FC<Props> = ({ product, index }) => {
   const { id, title, price, pictures, description } = product;
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,13 +26,19 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <Card key={id} sx={{ mr: 1, minWidth: 240, mb: 1, maxWidth: 240 }}>
+    <Card
+      key={id}
+      sx={{
+        mr: { xs: index % 2 ? 0 : 1, sm: 1 },
+        width: { xs: "calc(50vw - 20px)", sm: 240 },
+        mb: 1,
+      }}
+    >
       <CardMedia
         component="img"
-        height="194"
         image={pictures[0]}
         alt="Paella dish"
-        sx={{ cursor: "pointer" }}
+        sx={{ cursor: "pointer", height: { xs: 150, sm: 192 } }}
         onClick={() => navigate(`/products/${id}`)}
       />
       <CardContent>

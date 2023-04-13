@@ -38,7 +38,12 @@ const CategorieList: React.FC<Props> = () => {
             <Card
               onClick={() => navigate(`/categories/${category}`)}
               key={category}
-              sx={{ mr: 1, minWidth: 200, mb: 1, cursor: "pointer" }}
+              sx={{
+                mr: 1,
+                minWidth: { xs: 80, sm: 200 },
+                mb: 1,
+                cursor: "pointer",
+              }}
             >
               <CardContent>
                 <Typography fontWeight="bold">{category}</Typography>

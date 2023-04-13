@@ -20,6 +20,7 @@ const SnackbarController = () => {
       onClose={handleClose}
       message={snackbarMessage}
       key="app_snackbar"
+      autoHideDuration={2000}
     />
   );
 };

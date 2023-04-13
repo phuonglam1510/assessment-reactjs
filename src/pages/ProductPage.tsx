@@ -35,14 +35,15 @@ const ProductPage: React.FC<Props> = () => {
         sx={{
           display: "flex",
           flexDirection: "row",
+          flexWrap: "wrap",
           mt: 2,
         }}
       >
-        <Box sx={{ mr: { xs: 0, md: 2 } }}>
+        <Box sx={{ mr: { xs: 0, sm: 2 }, width: { xs: "100vw", sm: 400 } }}>
           <img
             src={pictures[0]}
-            width="400"
-            height="400"
+            width="100%"
+            height="100%"
             alt="Product pictures"
             style={{ objectFit: "cover" }}
           />

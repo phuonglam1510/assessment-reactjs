@@ -84,9 +84,9 @@ const NavigationHeader = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {ROUTINGS.map((page) => (
-                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.name}</Typography>
+              {ROUTINGS.map(({ name, routing }) => (
+                <MenuItem key={name} onClick={() => handleNavigate(routing)}>
+                  <Typography textAlign="center">{name}</Typography>
                 </MenuItem>
               ))}
             </Menu>

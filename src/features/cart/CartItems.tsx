@@ -42,7 +42,7 @@ const CartItems: React.FC<Props> = () => {
             key={product.id}
             sx={{
               mb: 1,
-              height: 160,
+              height: { xs: 140, sm: 160 },
               display: "flex",
               width: "100%",
               padding: 1,
@@ -50,7 +50,7 @@ const CartItems: React.FC<Props> = () => {
           >
             <CardMedia
               component="img"
-              sx={{ display: "inline-block", width: 200 }}
+              sx={{ display: "inline-block", width: { xs: 120, sm: 200 } }}
               image={product.pictures[0]}
               alt="Paella dish"
             />
@@ -62,8 +62,16 @@ const CartItems: React.FC<Props> = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <Box>
-                  <Typography noWrap variant="h6" component="div">
+                <Box sx={{ maxWidth: { xs: 120, sm: 300 } }}>
+                  <Typography
+                    sx={{
+                      fontSize: { xs: 16, sm: 18 },
+                      maxHeight: { xs: 44, sm: 100 },
+                      overflow: "hidden",
+                    }}
+                    fontWeight="bold"
+                    component="div"
+                  >
                     {product.title}
                   </Typography>
                   <Typography noWrap component="div">

@@ -26,9 +26,9 @@ const ProductList: React.FC<Props> = ({ title }) => {
           <Skeleton variant="rounded" width={200} height={60} />
         </Box>
       ) : (
-        <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+        <Box sx={{ display: "flex", flexWrap: "wrap", flexDirection: "row" }}>
+          {products.map((product, index) => (
+            <ProductCard key={product.id} index={index} product={product} />
           ))}
         </Box>
       )}
