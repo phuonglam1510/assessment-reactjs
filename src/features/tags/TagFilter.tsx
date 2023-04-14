@@ -9,10 +9,10 @@ import {
   SelectChangeEvent,
   Typography,
 } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Theme, useTheme } from "@mui/material/styles";
-import { RootState } from "../../stores/root.store";
+import { RootState, store } from "../../stores/root.store";
 import { fetchTags } from "../../stores/tags.store";
 import { fetchAllProducts } from "../../stores/products.store";
 
@@ -28,7 +28,6 @@ const MenuProps = {
 };
 
 const TagFilter = () => {
-  const dispatch = useDispatch();
   const theme = useTheme();
   const { tags } = useSelector((state: RootState) => state.tags);
 
@@ -49,15 +48,15 @@ const TagFilter = () => {
     } = event;
     const values = typeof value === "string" ? value.split(",") : value;
     setTags(typeof value === "string" ? value.split(",") : value);
-    dispatch(fetchAllProducts({ tag: values[0] }) as any);
+    store.dispatch(fetchAllProducts({ tag: values[0] }));
   };
 
   useEffect(() => {
-    dispatch(fetchTags() as any);
+    store.dispatch(fetchTags());
   }, []);
 
   return (
-    <div>
+    <Box>
       <Typography variant="h5" sx={{ mt: 1 }}>
         Filter
       </Typography>
@@ -87,7 +86,7 @@ const TagFilter = () => {
           ))}
         </Select>
       </FormControl>
-    </div>
+    </Box>
   );
 };
 export default TagFilter;

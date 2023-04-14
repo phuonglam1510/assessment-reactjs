@@ -7,6 +7,8 @@ export interface CategoryListState {
   error?: string;
 }
 
+const initialState: CategoryListState = { fetching: false, categories: [] };
+
 export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
   async () => {
@@ -15,9 +17,9 @@ export const fetchCategories = createAsyncThunk(
   }
 );
 
-const categorieSlice = createSlice<CategoryListState, any>({
+const categorieSlice = createSlice({
   name: "catetgories",
-  initialState: { fetching: false, categories: [] },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder

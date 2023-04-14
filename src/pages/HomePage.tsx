@@ -2,24 +2,23 @@ import React, { useEffect } from "react";
 import CategorieList from "../features/categories/CategorieList";
 import CollectionList from "../features/collections/CollectionList";
 import ProductList from "../features/products/ProductList";
-import { useDispatch } from "react-redux";
 import { fetchAllProducts } from "../stores/products.store";
+import { store } from "../stores/root.store";
+import { Box } from "@mui/material";
 
 interface Props {}
 
 const HomePage: React.FC<Props> = () => {
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(fetchAllProducts({}) as any);
+    store.dispatch(fetchAllProducts({}));
   }, []);
 
   return (
-    <div>
+    <Box>
       <CategorieList />
       <CollectionList />
       <ProductList />
-    </div>
+    </Box>
   );
 };
 

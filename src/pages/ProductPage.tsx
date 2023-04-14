@@ -13,24 +13,23 @@ const ProductPage: React.FC<Props> = () => {
   let { productId } = useParams();
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.products.products);
-  console.log(products);
   const product = React.useMemo(
     () => products.find((product) => product.id === +(productId || 0)),
     [products, productId]
   );
   if (!product) {
-    return <div>Not found</div>;
+    return <Box>Not found</Box>;
   }
 
   const { pictures, price, title, description, tags } = product;
 
   const handleAddCart = () => {
-    dispatch((addItemToCart as any)(product));
-    dispatch((openSnackbar as any)("Add cart successfully"));
+    dispatch(addItemToCart(product));
+    dispatch(openSnackbar("Add cart successfully"));
   };
 
   return (
-    <div>
+    <Box>
       <Box
         sx={{
           display: "flex",
@@ -71,7 +70,7 @@ const ProductPage: React.FC<Props> = () => {
           </Button>
         </Box>
       </Box>
-    </div>
+    </Box>
   );
 };
 

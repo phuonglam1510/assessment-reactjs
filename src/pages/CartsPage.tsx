@@ -4,11 +4,7 @@ import CartItems from "../features/cart/CartItems";
 interface Props {}
 
 const CartsPage: React.FC<Props> = () => {
-  return (
-    <div>
-      <CartItems />
-    </div>
-  );
+  return <CartItems />;
 };
 
 export default CartsPage;

@@ -1,24 +1,19 @@
 import React, { useEffect } from "react";
 import ProductList from "../features/products/ProductList";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { fetchAllProducts } from "../stores/products.store";
+import { store } from "../stores/root.store";
 
 interface Props {}
 
 const ProductsByCategoryPage: React.FC<Props> = () => {
   const { category } = useParams();
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllProducts({ category }) as any);
+    store.dispatch(fetchAllProducts({ category }));
   }, [category]);
 
-  return (
-    <div id="error-page">
-      <ProductList title={`Products for ${category} category`} />
-    </div>
-  );
+  return <ProductList title={`Products for ${category} category`} />;
 };
 
 export default ProductsByCategoryPage;

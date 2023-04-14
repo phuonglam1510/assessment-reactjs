@@ -1,7 +1,7 @@
 import { Box, Card, CardContent, Skeleton, Typography } from "@mui/material";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../stores/root.store";
+import { useSelector } from "react-redux";
+import { RootState, store } from "../../stores/root.store";
 import {
   CollectionListState,
   fetchCollections,
@@ -11,17 +11,16 @@ import { useNavigate } from "react-router-dom";
 interface Props {}
 
 const CollectionList: React.FC<Props> = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { collections, fetching } = useSelector<RootState, CollectionListState>(
     (state) => state.collections
   );
   useEffect(() => {
-    dispatch(fetchCollections() as any);
+    store.dispatch(fetchCollections());
   }, []);
 
   return (
-    <div>
+    <Box>
       <Typography variant="h4" sx={{ mt: 2 }}>
         Collections
       </Typography>
@@ -51,7 +50,7 @@ const CollectionList: React.FC<Props> = () => {
           ))}
         </Box>
       )}
-    </div>
+    </Box>
   );
 };
 

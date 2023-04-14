@@ -11,6 +11,8 @@ export interface ProductListState {
   error?: string;
 }
 
+const initialState: ProductListState = { fetching: false, products: [] };
+
 export const fetchAllProducts = createAsyncThunk(
   "products/fetchAll",
   async (filter: ProductFilterParams) => {
@@ -19,9 +21,9 @@ export const fetchAllProducts = createAsyncThunk(
   }
 );
 
-const productsSlice = createSlice<ProductListState, any>({
+const productsSlice = createSlice({
   name: "products",
-  initialState: { fetching: false, products: [] },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder

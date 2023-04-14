@@ -1,23 +1,22 @@
 import React, { useEffect } from "react";
 import ProductList from "../features/products/ProductList";
 import TagFilter from "../features/tags/TagFilter";
-import { useDispatch } from "react-redux";
 import { fetchAllProducts } from "../stores/products.store";
+import { store } from "../stores/root.store";
+import { Box } from "@mui/material";
 
 interface Props {}
 
 const ProductsPage: React.FC<Props> = () => {
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(fetchAllProducts({}) as any);
+    store.dispatch(fetchAllProducts({}));
   }, []);
 
   return (
-    <div id="error-page">
+    <Box>
       <TagFilter />
       <ProductList />
-    </div>
+    </Box>
   );
 };
 

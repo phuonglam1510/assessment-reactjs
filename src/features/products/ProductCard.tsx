@@ -21,8 +21,8 @@ const ProductCard: React.FC<Props> = ({ product, index }) => {
   const navigate = useNavigate();
 
   const addToCart = () => {
-    dispatch((addItemToCart as any)(product));
-    dispatch((openSnackbar as any)("Add item to cart successfully"));
+    dispatch(addItemToCart(product));
+    dispatch(openSnackbar("Add item to cart successfully"));
   };
 
   return (
@@ -37,7 +37,7 @@ const ProductCard: React.FC<Props> = ({ product, index }) => {
       <CardMedia
         component="img"
         image={pictures[0]}
-        alt="Paella dish"
+        alt="product cover"
         sx={{ cursor: "pointer", height: { xs: 150, sm: 192 } }}
         onClick={() => navigate(`/products/${id}`)}
       />

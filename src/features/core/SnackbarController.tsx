@@ -10,7 +10,7 @@ const SnackbarController = () => {
   );
 
   const handleClose = () => {
-    dispatch((closeSnackbar as any)());
+    dispatch(closeSnackbar());
   };
 
   return (

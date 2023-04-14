@@ -7,7 +7,7 @@ export interface AppState {
 
 const initialState: AppState = { snackbar: false, snackbarMessage: "" };
 
-const appSlice = createSlice<AppState, any>({
+const appSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {

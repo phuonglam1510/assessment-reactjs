@@ -10,6 +10,6 @@ export interface ProductFilterParams {
 
 export class ProductService extends BaseService {
   getProducts(filter: ProductFilterParams): Promise<ProductModel[]> {
-    return this.get<ProductModel[]>(`items?${stringify(filter as any)}`);
+    return this.get<ProductModel[]>(`items?${stringify({ ...filter })}`);
   }
 }

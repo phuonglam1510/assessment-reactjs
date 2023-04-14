@@ -7,6 +7,8 @@ export interface CollectionListState {
   error?: string;
 }
 
+const initialState: CollectionListState = { fetching: false, collections: [] };
+
 export const fetchCollections = createAsyncThunk(
   "collections/fetch",
   async () => {
@@ -15,9 +17,9 @@ export const fetchCollections = createAsyncThunk(
   }
 );
 
-const collectionsSlice = createSlice<CollectionListState, any>({
+const collectionsSlice = createSlice({
   name: "collections",
-  initialState: { fetching: false, collections: [] },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder

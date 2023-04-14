@@ -5,7 +5,7 @@ export type CartState = { product: ProductModel; quantity: number }[];
 
 const initialState: CartState = [];
 
-const cartSlice = createSlice<CartState, any>({
+const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {

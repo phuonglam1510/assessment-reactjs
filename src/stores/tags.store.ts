@@ -7,14 +7,16 @@ export interface TagListState {
   error?: string;
 }
 
+const initialState: TagListState = { fetching: false, tags: [] };
+
 export const fetchTags = createAsyncThunk("tags/fetchTags", async () => {
   const data = await new TagService().getAllTags();
   return data;
 });
 
-const tagSlice = createSlice<TagListState, any>({
+const tagSlice = createSlice({
   name: "tags",
-  initialState: { fetching: false, tags: [] },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder

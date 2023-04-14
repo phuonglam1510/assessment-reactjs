@@ -15,7 +15,7 @@ const ProductList: React.FC<Props> = ({ title }) => {
   );
 
   return (
-    <div>
+    <Box>
       <Typography variant="h4" sx={{ mt: 2 }}>
         {title || "Products"}
       </Typography>
@@ -32,7 +32,7 @@ const ProductList: React.FC<Props> = ({ title }) => {
           ))}
         </Box>
       )}
-    </div>
+    </Box>
   );
 };
 

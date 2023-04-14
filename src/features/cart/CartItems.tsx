@@ -23,15 +23,15 @@ const CartItems: React.FC<Props> = () => {
   const items = useSelector((state: RootState) => state.cart);
 
   const removeItem = (productId: number) => {
-    dispatch((removeItemFromCart as any)(productId));
+    dispatch(removeItemFromCart(productId));
   };
 
   const handleChange = (productId: number, value: number) => {
-    dispatch((updateCartItem as any)({ id: productId, quantity: value }));
+    dispatch(updateCartItem({ id: productId, quantity: value }));
   };
 
   return (
-    <div>
+    <Box>
       <Typography variant="h4" sx={{ mt: 2 }}>
         Carts
       </Typography>
@@ -114,7 +114,7 @@ const CartItems: React.FC<Props> = () => {
           </Card>
         ))}
       </Box>
-    </div>
+    </Box>
   );
 };
 

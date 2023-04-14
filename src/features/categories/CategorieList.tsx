@@ -1,28 +1,24 @@
 import { Box, Card, CardContent, Skeleton, Typography } from "@mui/material";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  CategoryListState,
-  fetchCategories,
-} from "../../stores/categories.store";
-import { RootState } from "../../stores/root.store";
+import { useSelector } from "react-redux";
+import { fetchCategories } from "../../stores/categories.store";
+import { RootState, store } from "../../stores/root.store";
 import { useNavigate } from "react-router-dom";
 
 interface Props {}
 
 const CategorieList: React.FC<Props> = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { categories, fetching } = useSelector<RootState, CategoryListState>(
-    (state) => state.categories
+  const { categories, fetching } = useSelector(
+    (state: RootState) => state.categories
   );
   useEffect(() => {
-    dispatch(fetchCategories() as any);
+    store.dispatch(fetchCategories());
   }, []);
 
   return (
-    <div>
+    <Box>
       <Typography variant="h4" sx={{ mt: 2 }}>
         Categories
       </Typography>
@@ -52,7 +48,7 @@ const CategorieList: React.FC<Props> = () => {
           ))}
         </Box>
       )}
-    </div>
+    </Box>
   );
 };
 
