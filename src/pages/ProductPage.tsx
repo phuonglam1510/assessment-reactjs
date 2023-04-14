@@ -34,7 +34,7 @@ const ProductPage: React.FC<Props> = () => {
         sx={{
           display: "flex",
           flexDirection: "row",
-          flexWrap: "wrap",
+          flexWrap: { xs: "wrap", sm: "nowrap" },
           mt: 2,
         }}
       >
